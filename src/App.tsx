@@ -1,8 +1,7 @@
-import { Remark } from 'react-remark'
-import remarkParse from 'remark-parse'
 import remarkGFM from 'remark-gfm'
 import remarkMath from 'remark-math'
 import rehypeMathjax from 'rehype-mathjax'
+import Markdown from 'react-markdown'
 import './App.css'
 
 const exNum = (path: string) => {
@@ -30,17 +29,16 @@ export default function App() {
   return (
     keys.map((key) => (
       <section>
-        <Remark
+        <Markdown
           {...{ key }}
           rehypePlugins={[
             rehypeMathjax,
           ]}
           remarkPlugins={[
-            remarkParse,
             remarkGFM,
             remarkMath,
           ]}
-        >{answers[key]}</Remark>
+        >{answers[key]}</Markdown>
         <hr />
       </section>
     ))
